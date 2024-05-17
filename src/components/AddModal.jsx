@@ -63,4 +63,3 @@ function AddModal({ show, handleClose, drName, handleAdd }) {
 }
 
 export default AddModal;
- 
