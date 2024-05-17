@@ -6,11 +6,14 @@ import AddModal from './Add.Modal'
 
 
 const Doctors = () => {
+   const [drname, setDrName] = useState("")
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (name) => {setShow(true)
+    setDrName(name)
+  };
 
 
   return (
@@ -22,13 +25,14 @@ const Doctors = () => {
         {doctorData.map(({id,img,dep,name})=>(
             <Col key={id}>
             <img src={img} alt={name}
-             className="img-thumbnail doctor-img" onClick={handleShow}/>
+             className="img-thumbnail doctor-img" 
+             onClick={()=>handleShow(name)}/>
             <h5>{name}</h5>
             <h6>{dep}</h6>
             </Col>
         ))}
     </Row>
-    <AddModal handleClose={handleClose} show={show}/>
+    <AddModal handleClose={handleClose} show={show} drName={drname} />
   </Container>
   )
 }
